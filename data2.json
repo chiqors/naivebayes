@@ -1,0 +1,265 @@
+[{
+		"nama_pegawai": "ALI TOPAN",
+		"masa_kerja": 10,
+		"usia": 35,
+		"nilai_pelatihan": 71,
+		"nilai_kinerja": 93,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "SARTIKA",
+		"masa_kerja": 15,
+		"usia": 32,
+		"nilai_pelatihan": 82,
+		"nilai_kinerja": 62,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "MIKA",
+		"masa_kerja": 5,
+		"usia": 25,
+		"nilai_pelatihan": 91,
+		"nilai_kinerja": 88,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "RUBY",
+		"masa_kerja": 8,
+		"usia": 30,
+		"nilai_pelatihan": 72,
+		"nilai_kinerja": 96,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "BIAN UTAMI",
+		"masa_kerja": 20,
+		"usia": 45,
+		"nilai_pelatihan": 59,
+		"nilai_kinerja": 98,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "RIANDARI",
+		"masa_kerja": 17,
+		"usia": 42,
+		"nilai_pelatihan": 97,
+		"nilai_kinerja": 62,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "ULI ALWAN",
+		"masa_kerja": 23,
+		"usia": 52,
+		"nilai_pelatihan": 97,
+		"nilai_kinerja": 73,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "KANITA",
+		"masa_kerja": 18,
+		"usia": 48,
+		"nilai_pelatihan": 50,
+		"nilai_kinerja": 84,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "SARINI",
+		"masa_kerja": 2,
+		"usia": 32,
+		"nilai_pelatihan": 60,
+		"nilai_kinerja": 72,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "RAFINA",
+		"masa_kerja": 7,
+		"usia": 37,
+		"nilai_pelatihan": 81,
+		"nilai_kinerja": 99,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "BUDIMAN",
+		"masa_kerja": 15,
+		"usia": 48,
+		"nilai_pelatihan": 69,
+		"nilai_kinerja": 92,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "SARTIKA",
+		"masa_kerja": 15,
+		"usia": 32,
+		"nilai_pelatihan": 87,
+		"nilai_kinerja": 85,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "MIKA",
+		"masa_kerja": 5,
+		"usia": 25,
+		"nilai_pelatihan": 70,
+		"nilai_kinerja": 90,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "RUBY",
+		"masa_kerja": 8,
+		"usia": 30,
+		"nilai_pelatihan": 77,
+		"nilai_kinerja": 77,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "KANITA",
+		"masa_kerja": 18,
+		"usia": 47,
+		"nilai_pelatihan": 84,
+		"nilai_kinerja": 87,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "SARITA",
+		"masa_kerja": 2,
+		"usia": 32,
+		"nilai_pelatihan": 87,
+		"nilai_kinerja": 51,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "BUDIAN",
+		"masa_kerja": 15,
+		"usia": 40,
+		"nilai_pelatihan": 76,
+		"nilai_kinerja": 76,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "SARTIKA",
+		"masa_kerja": 11,
+		"usia": 32,
+		"nilai_pelatihan": 91,
+		"nilai_kinerja": 94,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "MIKO",
+		"masa_kerja": 6,
+		"usia": 25,
+		"nilai_pelatihan": 59,
+		"nilai_kinerja": 66,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "RIANDANI",
+		"masa_kerja": 17,
+		"usia": 48,
+		"nilai_pelatihan": 88,
+		"nilai_kinerja": 53,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "ULILWAN",
+		"masa_kerja": 24,
+		"usia": 52,
+		"nilai_pelatihan": 67,
+		"nilai_kinerja": 96,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "KANISA",
+		"masa_kerja": 18,
+		"usia": 48,
+		"nilai_pelatihan": 61,
+		"nilai_kinerja": 60,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "SARINA",
+		"masa_kerja": 3,
+		"usia": 32,
+		"nilai_pelatihan": 51,
+		"nilai_kinerja": 52,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "BUDIANA",
+		"masa_kerja": 15,
+		"usia": 48,
+		"nilai_pelatihan": 66,
+		"nilai_kinerja": 93,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "SANTIKA",
+		"masa_kerja": 16,
+		"usia": 32,
+		"nilai_pelatihan": 93,
+		"nilai_kinerja": 81,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "SAFIRA",
+		"masa_kerja": 11,
+		"usia": 32,
+		"nilai_pelatihan": 82,
+		"nilai_kinerja": 69,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "MIRA",
+		"masa_kerja": 26,
+		"usia": 50,
+		"nilai_pelatihan": 95,
+		"nilai_kinerja": 94,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "RIANTI",
+		"masa_kerja": 17,
+		"usia": 48,
+		"nilai_pelatihan": 85,
+		"nilai_kinerja": 83,
+		"hasil_evaluasi": "PHK"
+	},
+	{
+		"nama_pegawai": "CICI",
+		"masa_kerja": 11,
+		"usia": 32,
+		"nilai_pelatihan": 73,
+		"nilai_kinerja": 95,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "INA",
+		"masa_kerja": 6,
+		"usia": 25,
+		"nilai_pelatihan": 76,
+		"nilai_kinerja": 75,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "MIMA",
+		"masa_kerja": 11,
+		"usia": 32,
+		"nilai_pelatihan": 58,
+		"nilai_kinerja": 82,
+		"hasil_evaluasi": "PROMOSI"
+	},
+	{
+		"nama_pegawai": "NAYA",
+		"masa_kerja": 6,
+		"usia": 25,
+		"nilai_pelatihan": 54,
+		"nilai_kinerja": 97,
+		"hasil_evaluasi": "MUTASI"
+	},
+	{
+		"nama_pegawai": "SARINA",
+		"masa_kerja": 11,
+		"usia": 32,
+		"nilai_pelatihan": 60,
+		"nilai_kinerja": 87,
+		"hasil_evaluasi": "PROMOSI"
+	}
+]

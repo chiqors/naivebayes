@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap" rel="stylesheet">
 
-  <title>Tubes A.I</title>
+  <title>Naive Bayes - Input</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
                 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="data_simulasi.php">Data Latih</a>
+            <a class="nav-link" href="data_latih.php">Data Latih</a>
           </li>
         </ul>
       </div>
@@ -63,16 +63,21 @@
 
     <div class="row">
       <div class="mt-4 col-12">
-        <h3 class="tebal">Simulasi Probabilitas Diterimanya Ada Di PT KAI.</h3>
+        <h3 class="tebal">Simulasi Probabilitas Diterimanya Ada Di Perusahaan</h3>
       </div>
 
       <div class="col-6">
           <form method="POST" class="mt-3">
 
           <div class="form-group">
-            <label for="umur">Umur :</label>
-            <select name="umur" id="umur" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih umur anda--</option>
+            <label for="nama_pegawai">Nama Pegawai :</label>
+            <input type="text" class="form-control" name="nama_pegawai">
+          </div>
+
+          <div class="form-group">
+            <label for="masa_kerja">Masa Kerja :</label>
+            <select name="masa_kerja" id="masa_kerja" class="form-control selBox" required="required">
+                      <option value="" disabled selected>-- pilih masa kerja anda--</option>
                       <?php
                       for($i=20 ; $i <= 25 ; $i++){
                         echo"<option value='$i'>$i</option>";
@@ -82,42 +87,25 @@
           </div>
 
           <div class="form-group">
-            <label for="umur">Tinggi Badan :</label>
-            <select name="tinggi" id="tinggi" class="form-control selBox" required="required">
-                <option value="" disabled selected>-- pilih tinggi--</option>
-                <option value="kt">Kurang Tinggi ( < 150 cm - 159 cm )</option>
-                <option value="ideal">Ideal ( 160 cm - 167 cm )</option>
-                <option value="st">Sangat Tinggi ( >167 cm )</option>
+            <label for="usia">Usia :</label>
+            <select name="usia" id="usia" class="form-control selBox" required="required">
+                      <option value="" disabled selected>-- pilih usia anda--</option>
+                      <?php
+                      for($i=20 ; $i <= 25 ; $i++){
+                        echo"<option value='$i'>$i</option>";
+                      }
+                      ?>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="umur">Berat Badan :</label>
-            <select name="beratB" id="beratB" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih berat badan--</option>
-                      <option value="kurus">Kurus ( < 50 kg - 55 kg )</option>
-                      <option value="ideal">Ideal ( 56 kg - 60 kg )</option>
-                      <option value="tambun">Tambun ( >61 kg )</option>
-                  </select>
+            <label for="nilai_pelatihan">Nilai Pelatihan :</label>
+            <input type="number" class="form-control" name="nilai_pelatihan">
           </div>
 
           <div class="form-group">
-            <label for="umur">Status Kesehatan :</label>
-            <select name="kesehatan" id="kesehatan" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih status kesehatan--</option>
-                      <option value="sehat">Sehat</option>
-                      <option value="tidak_sehat">Tidak Sehat</option>
-                  </select>
-          </div>
-
-          <div class="form-group">
-            <label for="umur">Pendidikan :</label>
-            <select name="pendidikan" id="pendidikan" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih pendidikan--</option>
-                      <option value="sma">SMA</option>
-                      <option value="smk">SMK</option>
-                      <option value="s1">S1</option>
-                  </select>
+            <label for="nilai_kinerja">Nilai Kinerja :</label>
+            <input type="number" class="form-control" name="nilai_kinerja">
           </div>
 
           <div class="form-group">
@@ -155,41 +143,41 @@
 <script>
   function simulasi()
   {
-    var umur = $("#umur").val();
-    var tinggi_badan = $("#tinggi").val();
-    var berat_badan = $("#beratB").val();
-    var status_kesehatan = $("#kesehatan").val();
-    var pendidikan = $("#pendidikan").val();
+    var nama_pegawai = $("#nama_pegawai").val();
+    var masa_kerja = $("#masa_kerja").val();
+    var usia = $("#usia").val();
+    var nilai_pelatihan = $("#nilai_pelatihan").val();
+    var nilai_kinerja = $("#nilai_kinerja").val();
 
     //validasi
-    var um = document.getElementById("umur");
-    var tb = document.getElementById("tinggi");
-    var bb = document.getElementById("beratB");
-    var sk = document.getElementById("kesehatan");
-    var pp = document.getElementById("pendidikan");
+    var np = document.getElementById("nama_pegawai");
+    var mk = document.getElementById("masa_kerja");
+    var u = document.getElementById("usia");
+    var npe = document.getElementById("nilai_pelatihan");
+    var nki = document.getElementById("nilai_kinerja");
 
-    if(um.selectedIndex == 0){
-      alert("Umur Tidak Boleh Kosong");
+    if(np.selectedIndex == ""){
+      alert("Nama Tidak Boleh Kosong");
       return false;
     }
 
-    if(tb.selectedIndex == 0){
-      alert("Tinggi Badan Tidak Boleh Kosong");
+    if(mk.selectedIndex == 0){
+      alert("Masa Kerja Tidak Boleh Kosong");
       return false;
     }
 
-    if(bb.selectedIndex == 0){
-      alert("Berat Badan Tidak Boleh Kosong");
+    if(u.selectedIndex == 0){
+      alert("Usia Tidak Boleh Kosong");
       return false;
     }
 
-    if(sk.selectedIndex == 0){
-      alert("Status Kesehatan Tidak Boleh Kosong");
+    if(npe.selectedIndex == 0){
+      alert("Nilai Pelatihan Tidak Boleh Kosong");
       return false;
     }
 
-    if(pp.selectedIndex == 0){
-      alert("Pendidikan Tidak Boleh Kosong");
+    if(nki.selectedIndex == 0){
+      alert("Nilai Kinerja Tidak Boleh Kosong");
       return false;
     }
 
@@ -199,7 +187,7 @@
         url :'simulasi.php',
         type : 'POST',
         dataType : 'html',
-        data : {umur : umur , tinggi_badan : tinggi_badan , berat_badan : berat_badan , status_kesehatan : status_kesehatan , pendidikan : pendidikan},
+        data : {nama_pegawai : nama_pegawai , masa_kerja : masa_kerja , usia : usia , nilai_pelatihan : nilai_pelatihan , nilai_kinerja : nilai_kinerja},
         success : function(data){
           document.getElementById("hasilSIM").innerHTML = data;
         },

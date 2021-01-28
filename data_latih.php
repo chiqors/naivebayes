@@ -22,7 +22,7 @@
 
   <link rel="stylesheet" href="css/datatables.css">
 
-  <title>DATA SIMULASI</title>
+  <title>Naive Bayes - Data Latih</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
             <a class="nav-link" href="index.php">Naive Bayes</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="data_simulasi.php">Data Latih <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="data_latih.php">Data Latih <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -57,56 +57,38 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Umur</th>
-              <th>Berat Badan</th>
-              <th>Pendidikan</th>
-              <th>Tinggi Badan</th>
-              <th>Status Kesehatan</th>
-              <th>Status</th>
+              <th>Nama Pegawai</th>
+              <th>Masa Pegawai</th>
+              <th>Usia</th>
+              <th>Nilai Pelatihan</th>
+              <th>Nilai Kinerja</th>
+              <th>Hasil Evaluasi</th>
             </tr>
           </thead>
           <tbody>
           <?php
-            $data = 'data.json';
+            $data = 'data2.json';
             $json = file_get_contents($data);
             $hasil = json_decode($json,true);
 
             $no = 1;
             foreach ($hasil as $hasil) {
-
-              if($hasil['status'] == 1){
-                $stt = "diterima";
-              }else{
-                $stt = "ditolak";
-              }
-
-              if($hasil['tinggi'] == "ideal"){
-                $tinggi = "normal";
-              }else if($hasil['tinggi'] == "kt"){
-                $tinggi = "kurang tinggi";
-              }else if($hasil['tinggi'] == "st"){
-                $tinggi = "sangat tinggi";
-              }
-
-              if($hasil['kesehatan'] == "sehat"){
-                $sehat = "sehat";
-              }else if($hasil['kesehatan'] == "tidak_sehat"){
-                $sehat = "tidak sehat";
-              }
           ?>
 
             <tr>
               <td><?php echo $no; ?></td>
-              <td><?php echo $hasil['umur']; ?></td>
-              <td><?php echo $hasil['berat_badan']; ?></td>
-              <td><?php echo $hasil['pendidikan']; ?></td>
-              <td><?php echo $tinggi ?></td>
-              <td><?php echo $sehat; ?></td>
+              <td><?php echo $hasil['nama_pegawai']; ?></td>
+              <td><?php echo $hasil['masa_kerja']; ?></td>
+              <td><?php echo $hasil['usia']; ?></td>
+              <td><?php echo $hasil['nilai_pelatihan'] ?></td>
+              <td><?php echo $hasil['nilai_kinerja']; ?></td>
               <td><?php 
-              if($stt == "diterima"){
-                echo "<span class='badge badge-success' style='padding:10px'>diterima</span>";
+              if($hasil['hasil_evaluasi'] == "PROMOSI"){
+                echo "<span class='badge badge-success' style='padding:10px'>PROMOSI</span>";
+              }elseif($hasil['hasil_evaluasi'] == "MUTASI"){
+                echo "<span class='badge badge-warning' style='padding:10px'>MUTASI</span>";
               }else{
-                echo "<span class='badge badge-danger' style='padding:10px'>ditolak</span>";
+                echo "<span class='badge badge-danger' style='padding:10px'>PHK</span>";
               }
               ?></td>
             </tr>

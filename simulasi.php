@@ -3,39 +3,39 @@ require_once 'autoload.php';
 
 $obj = new Bayes();
 
-$jumTrue = $obj->sumTrue();
-$jumFalse = $obj->sumFalse();
+$jumPromosi = $obj->sumPromosi();
+$jumMutasi = $obj->sumMutasi();
+$jumPHK = $obj->sumPHK();
 $jumData = $obj->sumData();
 
-$a1 = $_POST['umur'];
-$a2 = $_POST['tinggi_badan'];
-$a3 = $_POST['berat_badan'];
-$a4 = $_POST['status_kesehatan'];
-$a5 = $_POST['pendidikan'];
+$a1 = $_POST['nama_pegawai'];
+$a2 = $_POST['masa_kerja'];
+$a3 = $_POST['usia'];
+$a4 = $_POST['nilai_pelatihan'];
+$a5 = $_POST['nilai_kinerja'];
 
-//TRUE
-$umur = $obj->probUmur($a1,1);
-$tinggi = $obj->probTinggi($a2,1);
-$bb = $obj->probBeratB($a3,1);
-$kesehatan = $obj->probKesehatan($a4,1);
-$pendidikan = $obj->probPendidikan($a5,1);
+//PROMOSI
+$masa_kerja1 = $obj->probMasaKerja($a2,"PROMOSI");
+$usia1 = $obj->probUsia($a3,"PROMOSI");
+$nilai_pelatihan1 = $obj->probNilaiPelatihan($a4,"PROMOSI");
+$nilai_kinerja1 = $obj->probNilaiKinerja($a5,"PROMOSI");
 
-//FALSE
-$umur2 = $obj->probUmur($a1,0);
-$tinggi2 = $obj->probTinggi($a2,0);
-$bb2 = $obj->probBeratB($a3,0);
-$kesehatan2 = $obj->probKesehatan($a4,0);
-$pendidikan2 = $obj->probPendidikan($a5,0);
+//MUTASI
+$masa_kerja2 = $obj->probMasaKerja($a2,"MUTASI");
+$usia2 = $obj->probUsia($a3,"MUTASI");
+$nilai_pelatihan2 = $obj->probNilaiPelatihan($a4,"MUTASI");
+$nilai_kinerja2 = $obj->probNilaiKinerja($a5,"MUTASI");
+
+//PHK
+$masa_kerja3 = $obj->probMasaKerja($a2,"PHK");
+$usia3 = $obj->probUsia($a3,"PHK");
+$nilai_pelatihan3 = $obj->probNilaiPelatihan($a4,"PHK");
+$nilai_kinerja3 = $obj->probNilaiKinerja($a5,"PHK");
 
 //result
-$paT = $obj->hasilTrue($jumTrue,$jumData,$umur,$tinggi,$bb,$kesehatan,$pendidikan);
-$paF = $obj->hasilFalse($jumTrue,$jumData,$umur2,$tinggi2,$bb2,$kesehatan2,$pendidikan2);
-
-if($a2 == "kt"){
-  $a2 = "Kurang Tinggi";
-}else if($a2 == "st"){
-  $a2 = "Sangat Tinggi";
-}
+$paPromosi = $obj->hasilPromosi($jumPromosi,$jumData,$masa_kerja1,$usia1,$nilai_pelatihan1,$nilai_kinerja1);
+$paMutasi = $obj->hasilPromosi($jumMutasi,$jumData,$masa_kerja2,$usia2,$nilai_pelatihan2,$nilai_kinerja2);
+$paPHK = $obj->hasilPHK($jumPHK,$jumData,$masa_kerja3,$usia3,$nilai_pelatihan3,$nilai_kinerja3);
 
 echo "
 <div class='jumbotron jumbotron-fluid' id='hslPrekdiksinya'>
@@ -52,11 +52,11 @@ echo "
     <b>Informasi Calon Pegawai</b>
   </div>
   <ul class='list-group list-group-flush'>
-    <li class='list-group-item'>umur : &nbsp;&nbsp;<b>$a1</b></li>
-    <li class='list-group-item'>tinggi : &nbsp;&nbsp;<b>$a2</b></li>
-    <li class='list-group-item'>berat badan : &nbsp;&nbsp;<b>$a3</b></li>
-    <li class='list-group-item'>kesehatan : &nbsp;&nbsp;<b>$a4</b></li>
-    <li class='list-group-item'>pendidikan : &nbsp;&nbsp;<b>$a5</b></li>
+    <li class='list-group-item'>Nama Pegawai : &nbsp;&nbsp;<b>$a1</b></li>
+    <li class='list-group-item'>Masa Kerja : &nbsp;&nbsp;<b>$a2</b></li>
+    <li class='list-group-item'>Usia : &nbsp;&nbsp;<b>$a3</b></li>
+    <li class='list-group-item'>Nilai Pelatihan : &nbsp;&nbsp;<b>$a4</b></li>
+    <li class='list-group-item'>Nilai Kinerja : &nbsp;&nbsp;<b>$a5</b></li>
   </ul>
 </div><br>
 <hr>
@@ -65,13 +65,15 @@ echo "
 echo "<br>
 <table class='table table-bordered' style='font-size:18px;text-align:center'>
   <tr style='background-color:#17a2b8;color:#fff'>
-    <th>Jumlah True</th>
-    <th>Jumlah False</th>
+    <th>Jumlah Promosi</th>
+    <th>Jumlah Mutasi</th>
+    <th>Jumlah PHK</th>
     <th>Jumlah Total Data</th>
   </tr>
   <tr>
-    <td>$jumTrue</td>
-    <td>$jumFalse</td>
+    <td>$jumPromosi</td>
+    <td>$jumMutasi</td>
+    <td>$jumPHK</td>
     <td>$jumData</td>
   </tr>
 </table>
@@ -81,38 +83,39 @@ echo "<br>
 <table class='table table-bordered' style='font-size:18px;text-align:center'>
   <tr style='background-color:#17a2b8;color:#fff'>
     <th></th>
-    <th>True</th>
-    <th>False</th>
+    <th>Promosi</th>
+    <th>Mutasi</th>
+    <th>PHK</th>
   </tr>
   <tr>
     <td>pA</td>
-    <td>$jumTrue / $jumData</td>
-    <td>$jumFalse / $jumData</td>
+    <td>$jumPromosi / $jumData</td>
+    <td>$jumMutasi / $jumData</td>
+    <td>$jumPHK / $jumData</td>
   </tr>
   <tr>
-    <td>Umur</td>
-    <td>$umur / $jumTrue</td>
-    <td>$umur2 / $jumFalse</td>
+    <td>Masa Kerja</td>
+    <td>$masa_kerja1 / $jumPromosi</td>
+    <td>$masa_kerja2 / $jumMutasi</td>
+    <td>$masa_kerja3 / $jumPHK</td>
   </tr>
   <tr>
-    <td>Tinggi Badan</td>
-    <td>$tinggi / $jumTrue</td>
-    <td>$tinggi2 / $jumFalse</td>
+    <td>Usia</td>
+    <td>$usia1 / $jumPromosi</td>
+    <td>$usia2 / $jumMutasi</td>
+    <td>$usia3 / $jumPHK</td>
   </tr>
   <tr>
-    <td>Berat Badan</td>
-    <td>$bb / $jumTrue</td>
-    <td>$bb2 / $jumFalse</td>
+    <td>Nilai Pelatihan</td>
+    <td>$nilai_pelatihan1 / $jumPromosi</td>
+    <td>$nilai_pelatihan2 / $jumMutasi</td>
+    <td>$nilai_pelatihan3 / $jumPHK</td>
   </tr>
   <tr>
-    <td>Status Kesehatan</td>
-    <td>$kesehatan / $jumTrue</td>
-    <td>$kesehatan2 / $jumFalse</td>
-  </tr>
-  <tr>
-    <td>Pendidikan</td>
-    <td>$pendidikan / $jumTrue</td>
-    <td>$pendidikan2 / $jumFalse</td>
+    <td>Nilai Kinerja</td>
+    <td>$nilai_kinerja1 / $jumPromosi</td>
+    <td>$nilai_kinerja2 / $jumMutasi</td>
+    <td>$nilai_kinerja3 / $jumPHK</td>
   </tr>
 </table>
 ";
@@ -120,46 +123,57 @@ echo "<br>
 echo "<br>
   <table class='table table-bordered' style='font-size:18px;text-align:center;'>
     <tr style='background-color:#17a2b8;color:#fff'>
-      <th>Presentasi Diterima</th>
-      <th>Presentasi Ditolak</th>
+      <th>Presentasi Promosi</th>
+      <th>Presentasi Mutasi</th>
+      <th>Presentasi PHK</th>
     </tr>
     <tr>
-      <td>$paT</td>
-      <td>$paF</td>
+      <td>$paPromosi</td>
+      <td>$paMutasi</td>
+      <td>$paPHK</td>
     </tr>
   </table>
 ";
 
-$result = $obj->perbandingan($paT,$paF);
+$result = $obj->perbandingan($paPromosi,$paMutasi,$paPHK);
 
-if($paT > $paF){
+if($paPromosi > ($paMutasi || $paPHK)){
   echo "<br>
-  <h3 class='tebal'>PRESENTASI <span class='badge badge-success' style='padding:10px'><b>DITERIMA</b></span> LEBIH BESAR DARI PADA PRESENTASI DITOLAK</h3><br>";
-  echo "<h4><br>Presentasi diterima sebanyak : <b>".round($result[1],2)." %</b> <br>Presentasi ditolak sebanyak : <b>".round($result[2],2)." % </b></h4>";
-}else if($paF > $paT){
+  <h3 class='tebal'>PRESENTASE <span class='badge badge-success' style='padding:10px'><b>PROMOSI</b></span> LEBIH BESAR DARI PADA PRESENTASE MUTASI DAN PHK</h3><br>";
+  echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";
+}
+if($paMutasi > ($paPromosi || $paPHK)){
   echo "<br>
-  <h3 class='tebal'>PRESENTASI <span class='badge badge-danger' style='padding:10px'><b>DITOLAK</b></span> LEBIH BESAR DARI PADA PRESENTASI DITERIMA</h3><br>";
-  echo "<h4><br>Presentasi ditolak sebanyak : <b>".round($result[1],2)." %</b> <br>Presentasi diterima sebanyak : <b>".round($result[2],2)." % </b></h4>";
+  <h3 class='tebal'>PRESENTASE <span class='badge badge-warning' style='padding:10px'><b>MUTASI</b></span> LEBIH BESAR DARI PADA PRESENTASE PROMOSI DAN PHK</h3><br>";
+  echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";
+}
+if($paPHK > ($paPromosi || $paMutasi)){
+  echo "<br>
+  <h3 class='tebal'>PRESENTASE <span class='badge badge-danger' style='padding:10px'><b>PHK</b></span> LEBIH BESAR DARI PADA PRESENTASE PROMOSI DAN MUTASI</h3><br>";
+  echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";
 }
 
 
-if($result[0] == "DITERIMA"){
+if($result[0] == "PROMOSI"){
   echo "
-  <div class='alert alert-success mt-5' role='aler'>
+  <div class='mt-5 alert alert-success' role='aler'>
     <h4 class='alert-heading'>Kesimpulan : $result[0] </h4>
-    <p>Selamat ! berdasarkan hasil prediksi , anda dinyatakan <b>diterima!</b></p>
-    <hr>
-    <p class='mb-0'>- Have a nice day -</p>
-  </div>";
-}else{
-  echo"
-  <div class='alert alert-danger mt-5' role='aler'>
-  <h4 class='alert-heading'>Kesimpulan : $result[0] </h4>
-  <p>Maaf, berdasarkan hasil prediksi , anda dinyatakan <b>ditolak!</p>
-  <hr>
-  <p class='mb-0'>- Don't give up ! -</p>
+    <p>Selamat! berdasarkan hasil prediksi, anda mendapatkan <b> PROMOSI!</b></p>
   </div>";
 }
-
+if($result[0] == "MUTASI"){
+  echo"
+  <div class='mt-5 alert alert-warning' role='aler'>
+    <h4 class='alert-heading'>Kesimpulan : $result[0] </h4>
+    <p>Maaf, berdasarkan hasil prediksi, anda mendapatkan <b>MUTASI!</p>
+  </div>";
+}
+if($result[0] == "PHK"){
+  echo"
+  <div class='mt-5 alert alert-danger' role='aler'>
+    <h4 class='alert-heading'>Kesimpulan : $result[0] </h4>
+    <p>Maaf, berdasarkan hasil prediksi, anda mendapatkan <b>PHK!</p>
+  </div>";
+}
 
  ?>

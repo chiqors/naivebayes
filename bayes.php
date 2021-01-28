@@ -1,7 +1,7 @@
 <?php
 class Bayes
 {
-  private $pegawai = "data.json";
+  private $pegawai = "data2.json";
   // private $jumTrue = 0;
   // private $jumFalse = 0;
   // private $jumData = 0;
@@ -12,9 +12,9 @@ class Bayes
   }
 
   /*================================================================
-  FUNCTION SUM TRUE DAN FALSE
+  FUNCTION SUM PROMOSI, MUTASI DAN PHK
   =================================================================*/
-  function sumTrue()
+  function sumPromosi()
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
@@ -22,7 +22,7 @@ class Bayes
     $t = 0;
     foreach($hasil as $hasil)
     {
-      if($hasil['status'] == 1){
+      if($hasil['status'] == "PROMOSI"){
         $t += 1;
       }
     }
@@ -30,7 +30,7 @@ class Bayes
     return $t;
   }
 
-  function sumFalse()
+  function sumMutasi()
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
@@ -38,7 +38,22 @@ class Bayes
     $t = 0;
     foreach($hasil as $hasil)
     {
-      if($hasil['status'] == 0){
+      if($hasil['status'] == "MUTASI"){
+        $t += 1;
+      }
+    }
+    return $t;
+  }
+
+  function sumPHK()
+  {
+    $data = file_get_contents($this->pegawai);
+    $hasil = json_decode($data,true);
+
+    $t = 0;
+    foreach($hasil as $hasil)
+    {
+      if($hasil['status'] == "PHK"){
         $t += 1;
       }
     }
@@ -57,138 +72,129 @@ class Bayes
   /*================================================================
   FUNCTION PROBABILITAS
   =================================================================*/
-  function probUmur($umur,$status)
+  function probMasaKerja($masa_kerja,$hasil_evaluasi)
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['umur'] == $umur && $hasil['status'] == $status){
+      if($hasil['masa_kerja'] == $masa_kerja && $hasil['hasil_evaluasi'] == $hasil_evaluasi){
         $t += 1;
-      }else if($hasil['umur'] == $umur && $hasil['status'] == $status){
-        $t +=1;
       }
     }
     return $t;
   }
 
-  function probTinggi($tinggi,$status)
+  function probUsia($usia,$hasil_evaluasi)
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['tinggi'] == $tinggi && $hasil['status'] == $status){
+      if($hasil['usia'] == $usia && $hasil['hasil_evaluasi'] == $hasil_evaluasi){
         $t += 1;
-      }else if($hasil['tinggi'] == $tinggi && $hasil['status'] == $status){
-        $t +=1;
       }
     }
     return $t;
   }
 
-  function probBeratB($bb,$status)
+  function probNilaiPelatihan($nilai_pelatihan,$hasil_evaluasi)
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['berat_badan'] == $bb && $hasil['status'] == $status){
+      if($hasil['nilai_pelatihan'] == $nilai_pelatihan && $hasil['hasil_evaluasi'] == $hasil_evaluasi){
         $t += 1;
-      }else if($hasil['berat_badan'] == $bb && $hasil['status'] == $status){
-        $t +=1;
       }
     }
     return $t;
   }
 
-  function probPendidikan($pendidikan,$status)
+  function probNilaiKinerja($nilai_kinerja,$hasil_evaluasi)
   {
     $data = file_get_contents($this->pegawai);
     $hasil = json_decode($data,true);
 
     $t = 0;
     foreach ($hasil as $hasil) {
-      if($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status){
+      if($hasil['nilai_kinerja'] == $nilai_kinerja && $hasil['hasil_evaluasi'] == $hasil_evaluasi){
         $t += 1;
-      }else if($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status){
-        $t +=1;
       }
     }
     return $t;
   }
 
-  function probKesehatan($kesehatan,$status)
-  {
-    $data = file_get_contents($this->pegawai);
-    $hasil = json_decode($data,true);
-
-    $t = 0;
-    foreach ($hasil as $hasil) {
-      if($hasil['kesehatan'] == $kesehatan && $hasil['status'] == $status){
-        $t += 1;
-      }else if($hasil['kesehatan'] == $kesehatan && $hasil['status'] == $status){
-        $t +=1;
-      }
-    }
-    return $t;
-  }
   //=================================================================
 
   /*=================================================================
   MARI BERHITUNG
   keterangan parameter :
-  $sT   : jumlah data yang bernilai true ( sumTrue )
-  $sF   : jumlah data yang bernilai false ( sumFalse )
+  $sP   : jumlah data yang bernilai promosi ( sumPromosi )
+  $sM   : jumlah data yang bernilai mutasi ( sumMutasi )
+  $sK   : jumlah data yang bernilai phk ( sumPHK )
   $sD   : jumlah data pada data latih ( sumData )
-  $pU   : jumlah probabilitas umur ( probUmur )
-  $pT   : jumlah probabilitas tinggi ( probTinggi )
-  $pBB  : jumlah probabilitas berat badan ( probBB )
-  $pK   : jumlah probabilitas kesehatan ( probKesehatan )
-  $pP   : jumlah probabilitas pendidikan (probPendidikan )
+  $pMK   : jumlah probabilitas masa kerja ( probMasaKerja )
+  $pU   : jumlah probabilitas usia ( probUsia )
+  $pNP  : jumlah probabilitas nilai pelatihan ( probNilaiPelatihan )
+  $pNK   : jumlah probabilitas nilai kinerja ( probNilaiKinerja )
   ==================================================================*/
 
-  function hasilTrue($sT = 0 , $sD = 0 , $pU = 0 ,$pT = 0, $pBB = 0,$pK = 0, $pP = 0)
+  function hasilPromosi($sP = 0 , $sD = 0 , $pMK = 0 ,$pU = 0, $pNP = 0,$pNK)
   {
-    $paTrue = $sT / $sD;
-    $p1 = $pU / $sT;
-    $p2 = $pT / $sT;
-    $p3 = $pBB / $sT;
-    $p4 = $pK / $sT;
-    $p5 = $pP / $sT;
-    $hsl = $paTrue * $p1 * $p2 * $p3 * $p4 * $p5;
+    $paPromosi = $sP / $sD;
+    $p1 = $pMK / $sP;
+    $p2 = $pU / $sP;
+    $p3 = $pNP / $sP;
+    $p4 = $pNK / $sP;
+    $hsl = $paPromosi * $p1 * $p2 * $p3 * $p4;
     return $hsl;
   }
 
-  function hasilFalse($sF = 0 , $sD = 0 , $pU = 0 ,$pT = 0, $pBB = 0,$pK = 0, $pP = 0)
+  function hasilMutasi($sM = 0 , $sD = 0 , $pMK = 0 ,$pU = 0, $pNP = 0,$pNK)
   {
-    $paFalse = $sF / $sD;
-    $p1 = $pU / $sF;
-    $p2 = $pT / $sF;
-    $p3 = $pBB / $sF;
-    $p4 = $pK / $sF;
-    $p5 = $pP / $sF;
-    $hsl = $paFalse * $p1 * $p2 * $p3 * $p4 * $p5;
+    $paMutasi = $sM / $sD;
+    $p1 = $pMK / $sM;
+    $p2 = $pU / $sM;
+    $p3 = $pNP / $sM;
+    $p4 = $pNK / $sM;
+    $hsl = $paMutasi * $p1 * $p2 * $p3 * $p4;
     return $hsl;
   }
 
-  function perbandingan($pATrue,$pAFalse)
+  function hasilPHK($sK = 0 , $sD = 0 , $pMK = 0 ,$pU = 0, $pNP = 0,$pNK)
   {
-    if($pATrue > $pAFalse){
-      $stt = "DITERIMA";
-      $hitung = ($pATrue / ($pATrue + $pAFalse)) * 100;
+    $paPHK = $sK / $sD;
+    $p1 = $pMK / $sK;
+    $p2 = $pU / $sK;
+    $p3 = $pNP / $sK;
+    $p4 = $pNK / $sK;
+    $hsl = $paPHK * $p1 * $p2 * $p3 * $p4;
+    return $hsl;
+  }
+
+  function perbandingan($pAPromosi,$pAMutasi,$pAPHK)
+  {
+    if($pAPromosi > ($pAMutasi || $pAPHK)){
+      $hasil_evaluasi = "PROMOSI";
+      $hitung = ($pAPromosi / ($pAPromosi + $pAMutasi + $pAPHK)) * 100;
       $diterima = 100 - $hitung;
-    }elseif($pAFalse > $pATrue)
-    {
-      $stt = "DITOLAK";
-      $hitung = ($pAFalse / ($pAFalse + $pATrue)) * 100;
+    }
+    if($pAMutasi > ($pAPromosi || $pAPHK)){
+      $hasil_evaluasi = "MUTASI";
+      $hitung = ($pAMutasi / ($pAMutasi + $pAPromosi + $pAPHK)) * 100;
+      $diterima = 100 - $hitung;
+    }
+    if($pAPHK > ($pAPromosi || $pAMutasi)){
+      $hasil_evaluasi = "PHK";
+      $hitung = ($pAPHK / ($pAPHK + $pAPromosi + $pAMutasi)) * 100;
       $diterima = 100 - $hitung;
     }
 
-    $hsl = array($stt,$hitung,$diterima);
+    $hsl = array($hasil_evaluasi,$hitung,$diterima);
     return $hsl;
   }
   //=================================================================

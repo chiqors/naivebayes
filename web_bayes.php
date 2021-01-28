@@ -8,8 +8,9 @@ $obj = new Bayes();
 // echo $obj->sumFalse()."<br>";
 // echo $obj->probUmur(21,0)."<br>";
 
-$jumTrue = $obj->sumTrue();
-$jumFalse = $obj->sumFalse();
+$jumPromosi = $obj->sumPromosi();
+$jumMutasi = $obj->sumMutasi();
+$jumPHK = $obj->sumPHK();
 $jumData = $obj->sumData();
 
 $a1 = 20;
