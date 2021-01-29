@@ -51,13 +51,33 @@
       <div class="row">
         <div class="mt-5 col-12">
           <h2 class="tebal">Naive Bayes</h2>
-          <p class="mt-4 desc">Naïve Bayes Classifier merupakan sebuah metoda klasifikasi yang berakar pada teorema Bayes.
-          Metode pengklasifikasian dengan menggunakan metode probabilitas dan statistik yg dikemukakan oleh ilmuwan Inggris Thomas Bayes,
-          yaitu memprediksi peluang di masa depan berdasarkan pengalaman di masa sebelumnya sehingga dikenal sebagai Teorema Bayes.
-          Ciri utama dr Naïve Bayes Classifier ini adalah asumsi yang sangat kuat (naïf) akan independensi dari masing-masing kondisi / kejadian.
-          Menurut Olson Delen (2008) menjelaskan Naïve Bayes untuk setiap kelas keputusan, menghitung probabilitas dg syarat bahwa kelas keputusan adalah benar,
-          mengingat vektor informasi obyek. Algoritma ini mengasumsikan bahwa atribut obyek adalah independen.
-          Probabilitas yang terlibat dalam memproduksi perkiraan akhir dihitung sebagai jumlah frekuensi dari " master " tabel keputusan.</p>
+          <p>Sebuah perusahaan melakukan evaluasi tahunan terhadap sejumlah pegawainya. Pimpinan menetapkan hasil evaluasi berupa PROMOSI, MUTASI, PHK. Setiap hasil evaluasi tersebut didasarkan pada kriteria-kriteria.  Deskripsi kriteria tersebut dapat dilihat pada tabel berikut:  </p>
+          <table class='table table-bordered' style='font-size:18px;text-align:center'>
+            <tr style='background-color:#17a2b8;color:#fff'>
+              <th>Masa Kerja</th>
+              <th>Usia</th>
+              <th>Nilai Pelatihan</th>
+              <th>Nilai Kinerja</th>
+            </tr>
+            <tr>
+              <td>0 - 10</td>
+              <td>46 - 55</td>
+              <td>50 - 65</td>
+              <td>50 - 65</td>
+            </tr>
+            <tr>
+              <td>11 - 20</td>
+              <td>36 - 45</td>
+              <td>66 - 85</td>
+              <td>66 - 85</td>
+            </tr>
+            <tr>
+              <td>21 - 30</td>
+              <td>25 - 35</td>
+              <td>86 - 100</td>
+              <td>86 - 100</td>
+            </tr>
+          </table>
         </div>
       </div>
 
@@ -71,41 +91,27 @@
 
           <div class="form-group">
             <label for="nama_pegawai">Nama Pegawai :</label>
-            <input type="text" class="form-control" name="nama_pegawai">
+            <input value="Budiano" type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" required>
           </div>
 
           <div class="form-group">
             <label for="masa_kerja">Masa Kerja :</label>
-            <select name="masa_kerja" id="masa_kerja" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih masa kerja anda--</option>
-                      <?php
-                      for($i=20 ; $i <= 25 ; $i++){
-                        echo"<option value='$i'>$i</option>";
-                      }
-                      ?>
-            </select>
+            <input value="15" type="number" class="form-control" id="masa_kerja" name="masa_kerja" min="0" max="30" required>
           </div>
 
           <div class="form-group">
             <label for="usia">Usia :</label>
-            <select name="usia" id="usia" class="form-control selBox" required="required">
-                      <option value="" disabled selected>-- pilih usia anda--</option>
-                      <?php
-                      for($i=20 ; $i <= 25 ; $i++){
-                        echo"<option value='$i'>$i</option>";
-                      }
-                      ?>
-            </select>
+            <input value="48" type="number" class="form-control" id="usia" name="usia" min="25" max="55" required>
           </div>
 
           <div class="form-group">
             <label for="nilai_pelatihan">Nilai Pelatihan :</label>
-            <input type="number" class="form-control" name="nilai_pelatihan">
+            <input value="95" type="number" class="form-control" id="nilai_pelatihan" name="nilai_pelatihan" min="50" max="100" required>
           </div>
 
           <div class="form-group">
             <label for="nilai_kinerja">Nilai Kinerja :</label>
-            <input type="number" class="form-control" name="nilai_kinerja">
+            <input value="52" type="number" class="form-control" id="nilai_kinerja" name="nilai_kinerja" min="50" max="100" required>
           </div>
 
           <div class="form-group">
@@ -148,38 +154,6 @@
     var usia = $("#usia").val();
     var nilai_pelatihan = $("#nilai_pelatihan").val();
     var nilai_kinerja = $("#nilai_kinerja").val();
-
-    //validasi
-    var np = document.getElementById("nama_pegawai");
-    var mk = document.getElementById("masa_kerja");
-    var u = document.getElementById("usia");
-    var npe = document.getElementById("nilai_pelatihan");
-    var nki = document.getElementById("nilai_kinerja");
-
-    if(np.selectedIndex == ""){
-      alert("Nama Tidak Boleh Kosong");
-      return false;
-    }
-
-    if(mk.selectedIndex == 0){
-      alert("Masa Kerja Tidak Boleh Kosong");
-      return false;
-    }
-
-    if(u.selectedIndex == 0){
-      alert("Usia Tidak Boleh Kosong");
-      return false;
-    }
-
-    if(npe.selectedIndex == 0){
-      alert("Nilai Pelatihan Tidak Boleh Kosong");
-      return false;
-    }
-
-    if(nki.selectedIndex == 0){
-      alert("Nilai Kinerja Tidak Boleh Kosong");
-      return false;
-    }
 
     //batas validasi
 

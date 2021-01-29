@@ -137,17 +137,17 @@ echo "<br>
 
 $result = $obj->perbandingan($paPromosi,$paMutasi,$paPHK);
 
-if($paPromosi > ($paMutasi || $paPHK)){
+if($paPromosi > $paMutasi && $paPromosi > $paPHK){
   echo "<br>
   <h3 class='tebal'>PRESENTASE <span class='badge badge-success' style='padding:10px'><b>PROMOSI</b></span> LEBIH BESAR DARI PADA PRESENTASE MUTASI DAN PHK</h3><br>";
   echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";
 }
-if($paMutasi > ($paPromosi || $paPHK)){
+if($paMutasi > $paPromosi && $paMutasi > $paPHK){
   echo "<br>
   <h3 class='tebal'>PRESENTASE <span class='badge badge-warning' style='padding:10px'><b>MUTASI</b></span> LEBIH BESAR DARI PADA PRESENTASE PROMOSI DAN PHK</h3><br>";
   echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";
 }
-if($paPHK > ($paPromosi || $paMutasi)){
+if($paPHK > $paPromosi && $paPHK > $paMutasi){
   echo "<br>
   <h3 class='tebal'>PRESENTASE <span class='badge badge-danger' style='padding:10px'><b>PHK</b></span> LEBIH BESAR DARI PADA PRESENTASE PROMOSI DAN MUTASI</h3><br>";
   echo "<h4><br>Presentase promosi sebanyak : <b>".round($result[1],2)." %</b> <br>Presentase mutasi sebanyak : <b>".round($result[2],2)." % </b> <br>Presentase phk sebanyak : <b>".round($result[3],2)." % </b></h4>";

@@ -51,7 +51,7 @@
   <div class="row">
     <div class="mt-5 col-12">
       <h2 class="tebal">List Data Latih</h2><br>
-      <p class="desc">Berikut ini adalah data latih yang saya gunakan dalam membuat simulasi kemungkinan diterimanya calon pendaftar PT.KAI menggunakan metode naive bayes. Data ini dikumpulkan melalui metode wawancara dan melakukan riset kepada narasumber.</p><br>
+      <p class="desc">Adapun daftar pegawai yang telah dievaluasi pada tahun sebelumnya dapat dilihat pada tabel berikut: </p><br>
 
         <table id="dataLatih" class="pt-3 mb-3 display">
           <thead>
@@ -67,7 +67,7 @@
           </thead>
           <tbody>
           <?php
-            $data = 'data2.json';
+            $data = 'data.json';
             $json = file_get_contents($data);
             $hasil = json_decode($json,true);
 
