@@ -42,6 +42,9 @@
           <li class="nav-item">
             <a class="nav-link" href="data_latih.php">Data Latih</a>
           </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tambah_data.php">Tambah Data</a>
+            </li>
         </ul>
       </div>
     </div>
@@ -91,27 +94,27 @@
 
           <div class="form-group">
             <label for="nama_pegawai">Nama Pegawai :</label>
-            <input value="Budiano" type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" required>
+            <input value="" type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" required>
           </div>
 
           <div class="form-group">
             <label for="masa_kerja">Masa Kerja :</label>
-            <input value="15" type="number" class="form-control" id="masa_kerja" name="masa_kerja" min="0" max="30" required>
+            <input value="" type="number" class="form-control" id="masa_kerja" name="masa_kerja" min="0" max="30" required>
           </div>
 
           <div class="form-group">
             <label for="usia">Usia :</label>
-            <input value="48" type="number" class="form-control" id="usia" name="usia" min="25" max="55" required>
+            <input value="" type="number" class="form-control" id="usia" name="usia" min="25" max="55" required>
           </div>
 
           <div class="form-group">
             <label for="nilai_pelatihan">Nilai Pelatihan :</label>
-            <input value="95" type="number" class="form-control" id="nilai_pelatihan" name="nilai_pelatihan" min="50" max="100" required>
+            <input value="" type="number" class="form-control" id="nilai_pelatihan" name="nilai_pelatihan" min="50" max="100" required>
           </div>
 
           <div class="form-group">
             <label for="nilai_kinerja">Nilai Kinerja :</label>
-            <input value="52" type="number" class="form-control" id="nilai_kinerja" name="nilai_kinerja" min="50" max="100" required>
+            <input value="" type="number" class="form-control" id="nilai_kinerja" name="nilai_kinerja" min="50" max="100" required>
           </div>
 
           <div class="form-group">

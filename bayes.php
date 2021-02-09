@@ -1,4 +1,5 @@
 <?php
+include_once("function.php");
 class Bayes
 {
   private $pegawai = "data.json";
@@ -200,7 +201,7 @@ class Bayes
 
   function categorizeJSON()
   {
-    $data = file_get_contents($this->pegawai);
+    $data = getDataLatih();
     $hasil = json_decode($data,true);
 
     foreach($hasil as &$value) {
@@ -272,6 +273,44 @@ class Bayes
         $value = 11;
       } else if ($value >= 86 && $value <= 100) {
         $value = 12;
+      }
+    }
+    return $value;
+  }
+
+  function categorizeSimulasi($value, $type)
+  {
+    if ($type == "MK") {
+      if ($value >= 0 && $value <= 10) {
+        $value = "Masa Kerja = 0 - 10";
+      } else if ($value >= 11 && $value <= 20) {
+        $value = "Masa Kerja = 11 - 20";
+      } else if ($value >= 21 && $value <= 30) {
+        $value = "Masa Kerja = 21 - 30";
+      }
+    } else if ($type == "U") {
+      if ($value >= 25 && $value <= 35) {
+        $value = "Usia = 25 - 35";
+      } else if ($value >= 36 && $value <= 45) {
+        $value = "Usia = 36 - 45";
+      } else if ($value >= 46 && $value <= 55) {
+        $value = "Usia = 46 - 55";
+      } 
+    } else if ($type == "NP") {
+      if ($value >= 50 && $value <= 65) {
+        $value = "Nilai Pelatihan = 50 - 65";
+      } else if ($value >= 66 && $value <= 85) {
+        $value = "Nilai Pelatihan = 66 - 85";
+      } else if ($value >= 86 && $value <= 100) {
+        $value = "Nilai Pelatihan = 86 - 100";
+      }
+    } else if ($type == "NK") {
+      if ($value >= 50 && $value <= 65) {
+        $value = "Nilai Kinerja = 50 - 65";
+      } else if ($value >= 66 && $value <= 85) {
+        $value = "Nilai Kinerja = 66 - 85";
+      } else if ($value >= 86 && $value <= 100) {
+        $value = "Nilai Kinerja = 86 - 100";
       }
     }
     return $value;
