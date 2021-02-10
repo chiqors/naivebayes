@@ -65,6 +65,10 @@ $p_x_promosi = $p_masa_kerja_promosi * $p_usia_promosi * $p_nilai_pelatihan_prom
 $p_x_mutasi = $p_masa_kerja_mutasi * $p_usia_mutasi * $p_nilai_pelatihan_mutasi * $p_nilai_kinerja_mutasi;
 $p_x_phk = $p_masa_kerja_phk * $p_usia_phk * $p_nilai_pelatihan_phk * $p_nilai_kinerja_phk;
 
+$p_fix_promosi = $p_x_promosi * $p_promosi;
+$p_fix_mutasi = $p_x_mutasi * $p_mutasi;
+$p_fix_phk = $p_x_phk * $p_phk;
+
 echo "
 <div class='jumbotron jumbotron-fluid' id='hslPrekdiksinya'>
   <div class='container'>
@@ -193,7 +197,11 @@ echo "<br>
       <p>P(X | Promosi) = $p_masa_kerja_promosi * $p_usia_promosi * $p_nilai_pelatihan_promosi * $p_nilai_kinerja_promosi = $paPromosi;
       <p>P(X | Mutasi) = $p_masa_kerja_mutasi * $p_usia_mutasi * $p_nilai_pelatihan_mutasi * $p_nilai_kinerja_mutasi = $paMutasi;
       <p>P(X | PHK) = $p_masa_kerja_phk * $p_usia_phk * $p_nilai_pelatihan_phk * $p_nilai_kinerja_phk = $paPHK;
-    </div>
+      <h2>Langkah 4 : Mengkalikan hasil P(X|Ci) dengan P(Ci)</h2>
+      <p>P(Promosi) = $p_x_promosi * $p_promosi = $p_fix_promosi;
+      <p>P(Mutasi) = $p_x_mutasi * $p_mutasi = $p_fix_mutasi;
+      <p>P(PHK) = $p_x_phk * $p_phk = $p_fix_phk = $p_fix_phk;
+      </div>
   </div>
 ";
 
